@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <resources>
 
     <string name="app_name">wifiadb</string>
 
 </resources>
+=======
+<resources>
+
+    <string name="app_name">Tcommand</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+</resources>
+>>>>>>> 967d73b3d2f403df2affda4a40e21765ce06af29

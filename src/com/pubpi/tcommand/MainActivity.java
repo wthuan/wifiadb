@@ -7,7 +7,10 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
+<<<<<<< HEAD
 import cn.trinea.android.common.util.ShellUtils;
+=======
+>>>>>>> 967d73b3d2f403df2affda4a40e21765ce06af29
 import android.app.Activity;
 import android.content.Context;
 import android.net.wifi.WifiInfo;
@@ -49,8 +52,12 @@ public class MainActivity extends Activity {
 			@Override
 			public void run() {
 				while (true) {
+<<<<<<< HEAD
 
 					int result = ShellUtils.execCommand("netstat -an|grep 5555|grep LISTEN", false).result;
+=======
+					int result = RootCmd.execRootCmdSilent("netstat -an|grep 5555|grep LISTEN");
+>>>>>>> 967d73b3d2f403df2affda4a40e21765ce06af29
 					if (0 == result) {
 						handler.post(new Runnable() {
 							public void run() {
@@ -65,7 +72,11 @@ public class MainActivity extends Activity {
 						});
 					}
 					try {
+<<<<<<< HEAD
 						Thread.currentThread().sleep(5000);
+=======
+						Thread.currentThread().sleep(600000);
+>>>>>>> 967d73b3d2f403df2affda4a40e21765ce06af29
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -78,6 +89,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				button.setClickable(false);
+<<<<<<< HEAD
 				boolean isAdbWifiStarted = (0 == ShellUtils.execCommand("netstat -an|grep 5555|grep LISTEN", false).result);
 				if (!isAdbWifiStarted) {
 
@@ -86,12 +98,26 @@ public class MainActivity extends Activity {
 						return;
 					}
 					if (0 != ShellUtils.execCommand(new String[] { "stop adbd", "start adbd" }, true).result) {
+=======
+				boolean isAdbWifiStarted = (0 == RootCmd.execRootCmdSilent("netstat -an|grep 5555|grep LISTEN"));
+				if (!isAdbWifiStarted) {
+
+					if (0 != RootCmd.execRootCmdSilent("setprop service.adb.tcp.port 5555")) {
+						Toast.makeText(MainActivity.this, "设置端口失败", Toast.LENGTH_SHORT).show();
+						return;
+					}
+					if (0 != RootCmd.execRootCmdSilent("stop adbd;start adbd")) {
+>>>>>>> 967d73b3d2f403df2affda4a40e21765ce06af29
 						Toast.makeText(MainActivity.this, "启动服务失败", Toast.LENGTH_SHORT).show();
 						return;
 					}
 					button.setText("停止wifi调试服务");
 				} else {
+<<<<<<< HEAD
 					if (0 != ShellUtils.execCommand("stop adbd", true).result) {
+=======
+					if (0 != RootCmd.execRootCmdSilent("stop adbd")) {
+>>>>>>> 967d73b3d2f403df2affda4a40e21765ce06af29
 						Toast.makeText(MainActivity.this, "停止服务", Toast.LENGTH_SHORT).show();
 						return;
 					}
